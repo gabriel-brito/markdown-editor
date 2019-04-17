@@ -2,8 +2,15 @@
 
 import React, { Component } from 'react'
 import MarkdownEditor from './markdown-editor'
-import 'normalize.css'
+import marked from 'marked'
+import hljs from 'highlight.js'
 import './css/style.css'
+
+marked.setOptions({
+  highlight: (code) => {
+    return hljs.highlightAuto(code).value
+  }
+})
 
 class App extends Component {
   constructor() {
@@ -15,7 +22,7 @@ class App extends Component {
       value: ''
     }
 
-    this.getMarkup = () => ({__html: this.state.value})
+    this.getMarkup = () => ({__html: marked(this.state.value)})
   }
 
   render() {
