@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react'
-import MarkdownEditor from './markdown-editor'
+import MarkdownEditor from 'components/markdownEditor'
 import marked from 'marked'
 import hljs from 'highlight.js'
 import './css/style.css'
@@ -23,11 +23,20 @@ class App extends Component {
     }
 
     this.getMarkup = () => ({__html: marked(this.state.value)})
+
+    this.saveData = (value) => localStorage.setItem('markdown', value); 
+  }
+
+  componentDidMount() {
+    const value = localStorage.getItem('markdown');
+
+    this.setState({ value })
   }
 
   render() {
     return (
       <MarkdownEditor
+        saveData={this.saveData}
         value={this.state.value}
         handleChange={this.handleChange}
         getMarkup={this.getMarkup}

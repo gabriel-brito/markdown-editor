@@ -22,44 +22,48 @@ body {
 
 .editor {
   display: flex;
+  flex-wrap: wrap;
   height: 100%;
+}
+
+.editorHeader {
+  background: #222;
+  display: flex;
+  height: 40px;
+  justify-content: flex-end;
   width: 100%;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+.editorHeader .save {
+  background: green;
+  border: 0;
+  color: white;
+  font-weight: 700;
+  padding: 0 20px;
+  text-transform: uppercase;
 }
 
-form,
+.editorHeader .save:hover {
+  background: darkgreen;
+  cursor: pointer;
+}
+
+textarea,
 .view {
-  min-width: 50%;
+  font-family: sans-serif;
+  height: 100%;
   max-width: 50%;
+  min-width: 50%;
 }
 
 textarea {
-  border: 8px solid #fc0;
   font-size: 18px;
   padding: 10px;
   resize: none;
-  width: 100%;
 }
 
 textarea:focus {
   outline: 0 none;
-}
-
-button {
-  background: linear-gradient(#ff0, #fa0);
-  border: 3px solid #fd0;
-  color: #333;
-  font-size: 20px;
-  font-weight: 700;
-  height: 15%;
-  margin: 0;
-  text-transform: uppercase;
-  transition: all 0.15s ease-in-out;
-  width: 100%;
 }
 
 .view {
