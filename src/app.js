@@ -24,13 +24,21 @@ class App extends Component {
 
     this.getMarkup = () => ({__html: marked(this.state.value)})
 
-    this.saveData = (value) => localStorage.setItem('markdown', value); 
+    this.saveData = () => localStorage.setItem('markdown', this.state.value); 
   }
 
   componentDidMount() {
     const value = localStorage.getItem('markdown');
-
     this.setState({ value })
+  }
+
+  componentDidUpdate () {
+    clearInterval(this.timer)
+    this.timer = setTimeout(this.saveData, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
   }
 
   render() {

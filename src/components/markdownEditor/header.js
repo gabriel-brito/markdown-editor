@@ -1,13 +1,17 @@
 'use strict'
 
-import React from 'react'
+import React, { PropTypes } from 'react'
 
-const MarkdownEditorHeader = ({ value, saveData }) => (
+const MarkdownEditorHeader = ({ saveData }) => (
   <header className='editorHeader'>
     <button 
-      onClick={value && saveData(value)} 
+      onClick={saveData} 
       className='save'>Salvar</button> 
   </header>
 )
+
+MarkdownEditorHeader.propTypes = {
+  saveData: PropTypes.func.isRequired
+}
 
 export default MarkdownEditorHeader
